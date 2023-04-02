@@ -1,0 +1,30 @@
+const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
+const connectDB = require('./config/database')
+const authRouter = require('./routes/auth.routes')
+const userRouter = require('./routes/user.routes')
+const formRouter = require('./routes/form.routes')
+const careerRouter = require('./routes/career.routes')
+const periodRouter = require('./routes/period.routes')
+const professorRouter = require('./routes/professor.routes')
+const assignmentRouter = require('./routes/assignment.routes')
+const answerRouter = require('./routes/answer.routes')
+
+const app = express()
+connectDB()
+
+app.use(cors())
+app.use(morgan('dev'))
+app.use(express.json())
+
+app.use('/api/login', authRouter)
+app.use('/api/users', userRouter)
+app.use('/api/forms', formRouter)
+app.use('/api/careers', careerRouter)
+app.use('/api/periods', periodRouter)
+app.use('/api/professors', professorRouter)
+app.use('/api/assignments', assignmentRouter)
+app.use('/api/answers', answerRouter)
+
+module.exports = app

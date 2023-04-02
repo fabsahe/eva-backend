@@ -1,0 +1,35 @@
+{
+  "name": "eva-backend",
+  "version": "1.0.0",
+  "description": "backend api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index",
+    "dev": "nodemon -r dotenv/config ./index",
+    "mini-seeder": "node ./src/utils/mini-seeder",
+    "migration": "node ./src/utils/migration",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fabián Salinas Hernández",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "5.1.0",
+    "consola": "2.15.3",
+    "cors": "2.8.5",
+    "dotenv": "16.0.3",
+    "express": "4.18.2",
+    "jsonwebtoken": "8.5.1",
+    "mongoose": "6.7.5",
+    "morgan": "1.10.0",
+    "mysql2": "3.2.0",
+    "validator": "13.7.0"
+  },
+  "devDependencies": {
+    "eslint": "8.25.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-n": "15.3.0",
+    "eslint-plugin-promise": "6.1.0",
+    "nodemon": "2.0.20"
+  }
+}

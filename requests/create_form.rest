@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/form/create
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODljNjc5YjFmMzMxNjEzM2Y3MGQxOSIsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2Njk5ODU4NDgsImV4cCI6MTY3MDU5MDY0OH0.NnV0rvP7AfgBlgARlXE4yBZdC62Fr37oEY1QAnKnX2E
+
+{
+  "titulo": "Cuestionario de prueba 2",
+  "año": "2022",
+  "periodo": "A",
+  "carreras": [ "6389c679b1f3316133f70d03" ],
+  "items": [ { "id": 0, "pregunta": "Tu nombre", "opciones": [] } ]
+}
