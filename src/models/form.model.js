@@ -16,6 +16,7 @@ const formSchema = new mongoose.Schema({
       ref: 'Pregunta'
     }
   ],
+  numeroRespuestas: Number,
   fechaInicio: Date,
   fechaFin: Date,
   usuario: {

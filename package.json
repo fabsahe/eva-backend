@@ -8,6 +8,7 @@
     "dev": "nodemon -r dotenv/config ./index",
     "mini-seeder": "node ./src/utils/mini-seeder",
     "migration": "node ./src/utils/migration",
+    "delf": "node ./src/utils/deleteForms",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fabián Salinas Hernández",

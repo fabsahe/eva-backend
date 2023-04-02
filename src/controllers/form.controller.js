@@ -36,6 +36,7 @@ async function generateForm (isEmpty, data, userId) {
       carreras,
       periodo,
       preguntas: questions,
+      numeroRespuestas: 0,
       usuario: user._id
     }
     return newForm

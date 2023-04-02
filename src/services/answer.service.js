@@ -1,4 +1,5 @@
 const Answer = require('../models/answer.model')
+const Form = require('../models/form.model')
 
 const getAnswersForm = async (filterParams) => {
   const answers = await Answer.find(filterParams)
@@ -6,12 +7,14 @@ const getAnswersForm = async (filterParams) => {
 }
 
 const createNewAnswer = async (answer) => {
-  // console.log(newForm)
   try {
-    const createdForm = await Answer.create(answer)
-    return createdForm
+    const createdAnswer = await Answer.create(answer)
+    const form = await Form.findById(answer.cuestionario)
+    form.numeroRespuestas += 1
+    await form.save()
+    return createdAnswer
   } catch (e) {
-    throw Error('Error al crear el cuestionario')
+    throw Error('Error al registrar respuesta')
   }
 }
 
