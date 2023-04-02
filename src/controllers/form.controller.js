@@ -72,6 +72,30 @@ const getOneForm = async (req, res, next) => {
   }
 }
 
+const findForm = async (req, res, next) => {
+  const { title } = req.body
+  try {
+    const form = await formService.findForm({ titulo: title })
+    if (form.length > 0) {
+      res.send({
+        status: 'OK',
+        data: true,
+        message: 'Formulario encontrado'
+      })
+      return
+    }
+    res.send({
+      status: 'OK',
+      data: false,
+      message: 'Formulario no encontrado'
+    })
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: 'FAILED', data: { error: error?.message || error } })
+  }
+}
+
 const createNewForm = async (req, res, next) => {
   const { body, userId } = req
   const isEmpty = true
@@ -110,6 +134,7 @@ const updateOneForm = async (req, res, next) => {
 module.exports = {
   getAllForms,
   getOneForm,
+  findForm,
   createNewForm,
   updateOneForm
 }

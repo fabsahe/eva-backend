@@ -10,6 +10,15 @@ const getOneForm = async (formId) => {
   return form
 }
 
+const findForm = async (filterParams) => {
+  try {
+    const form = await Form.find(filterParams)
+    return form
+  } catch (e) {
+    throw Error('Error al buscar cuestionario')
+  }
+}
+
 const createNewForm = async (newForm) => {
   try {
     const createdForm = await Form.create(newForm)
@@ -31,6 +40,7 @@ const updateOneForm = async (formId, newForm) => {
 module.exports = {
   getAllForms,
   getOneForm,
+  findForm,
   createNewForm,
   updateOneForm
 }
