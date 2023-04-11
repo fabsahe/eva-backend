@@ -10,6 +10,7 @@ const saveProfessors = require('./migrations/professors')
 const savePeriods = require('./migrations/periods')
 const saveSubjects = require('./migrations/subjects')
 const saveAssignments = require('./migrations/assignments')
+const saveMultiGroups = require('./migrations/multigroups')
 const saveUsers = require('./migrations/users')
 
 dotenv.config()
@@ -37,6 +38,7 @@ async function getData () {
     await savePeriods(connection)
     await saveSubjects(connection)
     await saveAssignments(connection)
+    await saveMultiGroups(connection)
     await saveUsers(connection)
 
     await connection.end()
