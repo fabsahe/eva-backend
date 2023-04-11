@@ -7,6 +7,7 @@ const saveUsers = async (connection) => {
   const admin = new User({
     email: 'admin@utm.mx',
     name: 'Administrador',
+    type: 'admin',
     passwordHash: adminPasswordHash
   })
   const savedUser = await admin.save()
@@ -22,7 +23,8 @@ const saveUsers = async (connection) => {
       const passwordHash = await bcrypt.hash('secreto', 10)
       return {
         email: row.correo,
-        nombre: row.nombre,
+        name: row.nombre,
+        type: 'Jefe de Carrera',
         passwordHash
       }
     })

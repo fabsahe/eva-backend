@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   },
   name: String,
   passwordHash: String,
+  type: String,
   forms: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Cuestionario'
