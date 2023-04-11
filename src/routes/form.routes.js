@@ -5,7 +5,7 @@ const formController = require('../controllers/form.controller')
 
 formRouter.get('/', formController.getAllForms)
 formRouter.get('/:formId', formController.getOneForm)
-formRouter.post('/find', formController.findForm)
+formRouter.post('/check', formController.availableTitle)
 formRouter.post('/', auth, formController.createNewForm)
 formRouter.put('/:formId', auth, formController.updateOneForm)
 

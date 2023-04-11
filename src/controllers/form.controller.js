@@ -72,22 +72,30 @@ const getOneForm = async (req, res, next) => {
   }
 }
 
-const findForm = async (req, res, next) => {
-  const { title } = req.body
+const availableTitle = async (req, res, next) => {
+  const { title, formId } = req.body
   try {
-    const form = await formService.findForm({ titulo: title })
-    if (form.length > 0) {
+    const form = await formService.availableTitle({ titulo: title })
+    if (form.length === 0) {
       res.send({
         status: 'OK',
         data: true,
-        message: 'Formulario encontrado'
+        message: 'Título disponible'
+      })
+      return
+    }
+    if (form.length === 1 && form[0]._id.toString() === formId) {
+      res.send({
+        status: 'OK',
+        data: true,
+        message: 'Título disponible'
       })
       return
     }
     res.send({
       status: 'OK',
       data: false,
-      message: 'Formulario no encontrado'
+      message: 'Título no disponible'
     })
   } catch (error) {
     res
@@ -134,7 +142,7 @@ const updateOneForm = async (req, res, next) => {
 module.exports = {
   getAllForms,
   getOneForm,
-  findForm,
+  availableTitle,
   createNewForm,
   updateOneForm
 }

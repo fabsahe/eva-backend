@@ -10,7 +10,7 @@ const getOneForm = async (formId) => {
   return form
 }
 
-const findForm = async (filterParams) => {
+const availableTitle = async (filterParams) => {
   try {
     const form = await Form.find(filterParams)
     return form
@@ -40,7 +40,7 @@ const updateOneForm = async (formId, newForm) => {
 module.exports = {
   getAllForms,
   getOneForm,
-  findForm,
+  availableTitle,
   createNewForm,
   updateOneForm
 }
