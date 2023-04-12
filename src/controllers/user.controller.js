@@ -3,9 +3,15 @@ const bcrypt = require('bcrypt')
 const consola = require('consola')
 
 const getAllUsers = async (req, res, next) => {
+  const { userId, isAdmin } = req
   try {
-    const allUsers = await userService.getAllUsers()
-    res.send({ status: 'OK', data: allUsers })
+    if (isAdmin) {
+      const allUsers = await userService.getAllUsers()
+      res.send({ status: 'OK', data: allUsers })
+    } else {
+      const user = await userService.getOneUser(userId)
+      res.send({ status: 'OK', data: [user] })
+    }
   } catch (error) {
     res
       .status(error?.status || 500)

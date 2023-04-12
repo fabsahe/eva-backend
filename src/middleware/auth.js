@@ -16,8 +16,9 @@ module.exports = (req, res, next) => {
     })
   }
 
-  const { id: userId } = decodedToken
+  const { id: userId, type } = decodedToken
   req.userId = userId
+  req.isAdmin = type === 'admin'
 
   next()
 }

@@ -5,8 +5,8 @@ const getAllUsers = async () => {
   return allUsers
 }
 
-const getOneUser = async (email) => {
-  const user = await User.findOne(email)
+const getOneUser = async (userId) => {
+  const user = await User.findById(userId)
   return user
 }
 
