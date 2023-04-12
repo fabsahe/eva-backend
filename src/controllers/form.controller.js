@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const formService = require('../services/form.service')
 const questionService = require('../services/question.service')
 const User = require('../models/user.model')
@@ -49,8 +48,15 @@ async function generateForm (isEmpty, data, userId) {
 }
 
 const getAllForms = async (req, res, next) => {
+  const { userId, isAdmin } = req
   try {
-    const allForms = await formService.getAllForms()
+    let userFilter = null
+    if (isAdmin) {
+      userFilter = {}
+    } else {
+      userFilter = { usuario: userId }
+    }
+    const allForms = await formService.getAllForms(userFilter)
     res.send({ status: 'OK', data: allForms })
   } catch (error) {
     consola.error(error)

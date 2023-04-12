@@ -3,7 +3,7 @@ const formRouter = express.Router()
 const auth = require('../middleware/auth')
 const formController = require('../controllers/form.controller')
 
-formRouter.get('/', formController.getAllForms)
+formRouter.get('/', auth, formController.getAllForms)
 formRouter.get('/:formId', formController.getOneForm)
 formRouter.post('/check', formController.availableTitle)
 formRouter.post('/', auth, formController.createNewForm)
