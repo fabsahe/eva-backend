@@ -19,8 +19,21 @@ const createUser = async (newUser) => {
   }
 }
 
+const updatePassword = async (userId, passwordHash) => {
+  try {
+    const updatedPassword = await User.findByIdAndUpdate(userId, { passwordHash })
+    if (updatedPassword) {
+      return true
+    }
+    return false
+  } catch (e) {
+    throw Error('Error al actualizar contraseña')
+  }
+}
+
 module.exports = {
   getAllUsers,
   getOneUser,
-  createUser
+  createUser,
+  updatePassword
 }

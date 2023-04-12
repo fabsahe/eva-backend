@@ -34,7 +34,23 @@ const createUser = async (req, res, next) => {
   }
 }
 
+const updatePassword = async (req, res, next) => {
+  const { userId, password } = req.body
+  const saltRounds = 10
+  const passwordHash = await bcrypt.hash(password, saltRounds)
+  try {
+    const updatedPassword = await userService.updatePassword(userId, passwordHash)
+    res.status(201).send({ status: 'OK', data: updatedPassword })
+  } catch (error) {
+    consola.error(error)
+    res
+      .status(error?.status || 500)
+      .send({ status: 'FAILED', data: { error: error?.message || error } })
+  }
+}
+
 module.exports = {
   getAllUsers,
-  createUser
+  createUser,
+  updatePassword
 }
