@@ -61,8 +61,3 @@ async function migrate () {
 }
 
 migrate()
-
-/*
-setTimeout(function () {
-  return process.exit(0) // node js exit code
-}, 20000) */
