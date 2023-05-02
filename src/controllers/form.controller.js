@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const formService = require('../services/form.service')
 const questionService = require('../services/question.service')
 const User = require('../models/user.model')
@@ -5,38 +6,38 @@ const consola = require('consola')
 
 async function generateForm (isEmpty, data, userId) {
   const user = await User.findById(userId)
-  const { titulo, fechaInicio, fechaFin, año, carreras, periodo, items } = data
+  const { title, year, period, careers, questions, startDate, endDate } = data
 
-  const year1 = parseInt(fechaInicio.slice(0, 4))
-  const month1 = parseInt(fechaInicio.slice(5, 7)) - 1
-  const day1 = parseInt(fechaInicio.slice(8, 10))
+  const year1 = parseInt(startDate.slice(0, 4))
+  const month1 = parseInt(startDate.slice(5, 7)) - 1
+  const day1 = parseInt(startDate.slice(8, 10))
 
-  const year2 = parseInt(fechaFin.slice(0, 4))
-  const month2 = parseInt(fechaFin.slice(5, 7)) - 1
-  const day2 = parseInt(fechaFin.slice(8, 10))
+  const year2 = parseInt(endDate.slice(0, 4))
+  const month2 = parseInt(endDate.slice(5, 7)) - 1
+  const day2 = parseInt(endDate.slice(8, 10))
 
   const commonProperties = {
-    titulo,
-    fechaInicio: new Date(year1, month1, day1),
-    fechaFin: new Date(year2, month2, day2, 23, 59, 59)
+    title,
+    startDate: new Date(year1, month1, day1),
+    endDate: new Date(year2, month2, day2, 23, 59, 59)
   }
 
   if (isEmpty) {
-    const questions = await Promise.all(
-      items.map(async (item) => {
-        const createdQuestion = await questionService.createNewQuestion(item)
+    const savedQuestions = await Promise.all(
+      questions.map(async (question) => {
+        const createdQuestion = await questionService.createNewQuestion(question)
         return createdQuestion._id
       })
     )
 
     const newForm = {
       ...commonProperties,
-      año,
-      carreras,
-      periodo,
-      preguntas: questions,
-      numeroRespuestas: 0,
-      usuario: user._id
+      year,
+      careers,
+      period,
+      questions: savedQuestions,
+      answersNumber: 0,
+      user: user._id
     }
     return newForm
   } else {

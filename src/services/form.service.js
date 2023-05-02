@@ -1,7 +1,7 @@
 const Form = require('../models/form.model')
 
 const getAllForms = async (userFilter) => {
-  const allForms = await Form.find(userFilter).populate('carreras').populate('usuario')
+  const allForms = await Form.find(userFilter).populate('careers').populate('user')
   return allForms
 }
 

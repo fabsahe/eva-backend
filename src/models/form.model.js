@@ -1,25 +1,25 @@
 const mongoose = require('mongoose')
 
 const formSchema = new mongoose.Schema({
-  titulo: String,
-  año: String,
-  periodo: String,
-  carreras: [
+  title: String,
+  year: String,
+  period: String,
+  careers: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Carrera'
     }
   ],
-  preguntas: [
+  questions: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Pregunta'
     }
   ],
-  numeroRespuestas: Number,
-  fechaInicio: Date,
-  fechaFin: Date,
-  usuario: {
+  answersNumber: Number,
+  startDate: Date,
+  endDate: Date,
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Usuario'
   }
