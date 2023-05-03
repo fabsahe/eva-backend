@@ -6,7 +6,7 @@ const getAllForms = async (userFilter) => {
 }
 
 const getOneForm = async (formId) => {
-  const form = await Form.findById(formId).populate('carreras').populate('preguntas')
+  const form = await Form.findById(formId).populate('careers').populate('questions')
   return form
 }
 

@@ -1,14 +1,15 @@
 const mongoose = require('mongoose')
 
 const questionSchema = new mongoose.Schema({
+  key: Number,
   sentence: String,
   type: String,
   options: {
-    radios: [{ id: Number, value: String }],
-    checkboxes: [{ id: Number, value: String, checked: Boolean }],
-    scale: [{ value: String }],
-    rows: [{ id: Number, value: String }],
-    cols: [{ id: Number, value: String }],
+    radios: [{ key: Number, value: String }],
+    checkboxes: [{ key: Number, value: String, checked: Boolean }],
+    scale: [{ value: Number }],
+    rows: [{ key: Number, value: String }],
+    cols: [{ key: Number, value: String }],
     labels: [String]
   }
 },

@@ -25,7 +25,9 @@ async function generateForm (isEmpty, data, userId) {
   if (isEmpty) {
     const savedQuestions = await Promise.all(
       questions.map(async (question) => {
-        const createdQuestion = await questionService.createNewQuestion(question)
+        const { key, sentence, type, options } = question
+        const newQuestion = { key, sentence, type, options }
+        const createdQuestion = await questionService.createNewQuestion(newQuestion)
         return createdQuestion._id
       })
     )
@@ -82,7 +84,7 @@ const getOneForm = async (req, res, next) => {
 const availableTitle = async (req, res, next) => {
   const { title, formId } = req.body
   try {
-    const form = await formService.availableTitle({ titulo: title })
+    const form = await formService.availableTitle({ title })
     if (form.length === 0) {
       res.send({
         status: 'OK',
