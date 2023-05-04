@@ -32,7 +32,7 @@ formSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     const now = new Date()
     let visible = null
-    if (now >= returnedObject.fechaInicio && now <= returnedObject.fechaFin) {
+    if (now >= returnedObject.startDate && now <= returnedObject.endDate) {
       visible = true
     } else {
       visible = false
