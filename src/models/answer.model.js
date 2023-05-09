@@ -1,26 +1,20 @@
 const mongoose = require('mongoose')
 
 const answerSchema = new mongoose.Schema({
-  cuestionario: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Cuestionario'
-  },
-  carrera: {
+  career: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Carrera'
   },
-  profesor: {
+  professor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Profesor'
   },
-  grupo: String,
-  respuestas: [{
-    pregunta: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Pregunta'
-    },
-    respuesta: String
-  }]
+  group: String,
+  question: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Pregunta'
+  },
+  answers: [String]
 },
 {
   collection: 'Respuestas'

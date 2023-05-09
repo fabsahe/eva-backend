@@ -37,10 +37,22 @@ const updateOneForm = async (formId, newForm) => {
   }
 }
 
+const addAnswersNumber = async (formId) => {
+  try {
+    const form = await Form.findById(formId)
+    form.answersNumber += 1
+    await form.save()
+    return form
+  } catch (e) {
+    throw Error('Error al agregar contador')
+  }
+}
+
 module.exports = {
   getAllForms,
   getOneForm,
   availableTitle,
   createNewForm,
-  updateOneForm
+  updateOneForm,
+  addAnswersNumber
 }

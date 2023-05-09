@@ -1,4 +1,5 @@
 const answerService = require('../services/answer.service')
+const formService = require('../services/form.service')
 const consola = require('consola')
 
 const getAnswersForm = async (req, res, next) => {
@@ -13,12 +14,16 @@ const getAnswersForm = async (req, res, next) => {
   }
 }
 
-const createNewAnswer = async (req, res, next) => {
-  const { body } = req
-
+const createNewAnswers = async (req, res, next) => {
+  const { formId, answers } = req.body
   try {
-    const createdForm = await answerService.createNewAnswer(body)
-    res.status(201).send({ status: 'OK', data: createdForm })
+    const createdAnswers = await Promise.all(
+      answers.map(async (answer) => {
+        return await answerService.createNewAnswer(answer)
+      })
+    )
+    await formService.addAnswersNumber(formId)
+    res.status(201).send({ status: 'OK', data: createdAnswers.length })
   } catch (error) {
     consola.error(error)
     res
@@ -29,5 +34,5 @@ const createNewAnswer = async (req, res, next) => {
 
 module.exports = {
   getAnswersForm,
-  createNewAnswer
+  createNewAnswers
 }
