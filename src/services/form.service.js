@@ -10,6 +10,13 @@ const getOneForm = async (formId) => {
   return form
 }
 
+const getFormQuestions = async (formId) => {
+  const questions = await Form.findById(formId)
+    .select('title questions')
+    .populate('questions')
+  return questions
+}
+
 const availableTitle = async (filterParams) => {
   try {
     const form = await Form.find(filterParams)
@@ -51,6 +58,7 @@ const addAnswersNumber = async (formId) => {
 module.exports = {
   getAllForms,
   getOneForm,
+  getFormQuestions,
   availableTitle,
   createNewForm,
   updateOneForm,
