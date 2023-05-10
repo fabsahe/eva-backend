@@ -9,6 +9,7 @@
     "mini-seeder": "node ./src/utils/mini-seeder",
     "migration": "node ./src/utils/migration",
     "reset": "node ./src/utils/deleteForms",
+    "empty": "node ./src/utils/deleteAnswers",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fabián Salinas Hernández",
