@@ -6,6 +6,7 @@ const questionSchema = new mongoose.Schema({
   type: String,
   options: {
     radios: [{ key: Number, value: String }],
+    dropdown: [{ key: Number, value: String }],
     checkboxes: [{ key: Number, value: String, checked: Boolean }],
     scale: [{ value: Number }],
     rows: [{ key: Number, value: String }],
