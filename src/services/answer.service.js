@@ -27,6 +27,9 @@ const getFormAnswers = async (questions) => {
           value: item.value
         }))
       }
+      if (question.type === 'checkboxes') {
+        answerData.subQuestions = question.options.checkboxes.map((item) => item.value)
+      }
       return answerData
     })
   )
