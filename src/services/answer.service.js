@@ -22,13 +22,14 @@ const getFormAnswers = async (questions) => {
         answers
       }
       if (question.type === 'grid') {
+        answerData.labels = question.options.cols.map((item) => item.value)
         answerData.subQuestions = question.options.rows.map((item, index) => ({
           id: index,
           value: item.value
         }))
       }
       if (question.type === 'checkboxes') {
-        answerData.subQuestions = question.options.checkboxes.map((item) => item.value)
+        answerData.labels = question.options.checkboxes.map((item) => item.value)
       }
       return answerData
     })
