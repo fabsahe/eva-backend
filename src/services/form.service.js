@@ -1,4 +1,5 @@
 const Form = require('../models/form.model')
+const Question = require('../models/question.model')
 
 const getAllForms = async (userFilter) => {
   const allForms = await Form.find(userFilter).populate('careers').populate('user')
@@ -37,6 +38,11 @@ const createNewForm = async (newForm) => {
 
 const updateOneForm = async (formId, newForm) => {
   try {
+    // eliminar las preguntas antiguas
+    const currentForm = await Form.findById(formId)
+    const oldQuestions = currentForm.questions
+    await Question.deleteMany({ _id: { $in: oldQuestions } })
+    // actualizar con nuevas preguntas
     const updatedForm = await Form.findByIdAndUpdate(formId, newForm)
     return updatedForm
   } catch (e) {
