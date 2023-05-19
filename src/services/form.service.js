@@ -36,12 +36,14 @@ const createNewForm = async (newForm) => {
   }
 }
 
-const updateOneForm = async (formId, newForm) => {
+const updateOneForm = async (formId, newForm, isEmpty) => {
   try {
-    // eliminar las preguntas antiguas
-    const currentForm = await Form.findById(formId)
-    const oldQuestions = currentForm.questions
-    await Question.deleteMany({ _id: { $in: oldQuestions } })
+    // eliminar las preguntas antiguas, si el cuestionario no tiene respuestas
+    if (isEmpty) {
+      const currentForm = await Form.findById(formId)
+      const oldQuestions = currentForm.questions
+      await Question.deleteMany({ _id: { $in: oldQuestions } })
+    }
     // actualizar con nuevas preguntas
     const updatedForm = await Form.findByIdAndUpdate(formId, newForm)
     return updatedForm

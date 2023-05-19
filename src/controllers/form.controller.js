@@ -138,7 +138,7 @@ const updateOneForm = async (req, res, next) => {
   const newForm = await generateForm(isEmpty, body, userId)
 
   try {
-    const updatedForm = await formService.updateOneForm(formId, newForm)
+    const updatedForm = await formService.updateOneForm(formId, newForm, isEmpty)
     res.status(201).send({ status: 'OK', data: updatedForm })
   } catch (error) {
     consola.error(error)
