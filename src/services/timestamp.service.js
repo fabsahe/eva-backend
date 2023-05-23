@@ -4,6 +4,7 @@ const getTimestamps = async (filter) => {
   const timestamps = await Timestamp.find(filter)
     .populate('answers', 'answers question')
     .populate('professor', 'nombre')
+    .populate('subject', 'nombre')
 
   return timestamps
 }

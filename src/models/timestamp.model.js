@@ -13,6 +13,10 @@ const timestampSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Profesor'
   },
+  subject: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Materia'
+  },
   group: String,
   answers: [
     {

@@ -9,6 +9,10 @@ const answerSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Profesor'
   },
+  subject: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Materia'
+  },
   group: String,
   question: {
     type: mongoose.Schema.Types.ObjectId,

@@ -37,11 +37,13 @@ const createNewAnswers = async (req, res, next) => {
     )
     const career = createdAnswers[0].career
     const professor = createdAnswers[0].professor
+    const subject = createdAnswers[0].subject
     const group = createdAnswers[0].group
     const timestamp = {
       form: formId,
       career,
       professor,
+      subject,
       group,
       answers: createdAnswers
     }
