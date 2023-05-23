@@ -87,5 +87,4 @@ module.exports = {
   getAnswersGroups,
   getAnswersProfessors,
   createNewAnswer
-
 }

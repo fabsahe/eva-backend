@@ -1,5 +1,6 @@
 const answerService = require('../services/answer.service')
 const formService = require('../services/form.service')
+const timestampService = require('../services/timestamp.service')
 const consola = require('consola')
 
 const getFormAnswers = async (req, res, next) => {
@@ -34,8 +35,20 @@ const createNewAnswers = async (req, res, next) => {
         return await answerService.createNewAnswer(answer)
       })
     )
+    const career = createdAnswers[0].career
+    const professor = createdAnswers[0].professor
+    const group = createdAnswers[0].group
+    const timestamp = {
+      form: formId,
+      career,
+      professor,
+      group,
+      answers: createdAnswers
+    }
+    const createdTimestamp = await timestampService.createNewTimestamp(timestamp)
+
     await formService.addAnswersNumber(formId)
-    res.status(201).send({ status: 'OK', data: createdAnswers.length })
+    res.status(201).send({ status: 'OK', data: createdTimestamp.answers.length })
   } catch (error) {
     consola.error(error)
     res
