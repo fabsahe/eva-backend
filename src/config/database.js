@@ -6,8 +6,8 @@ const connectDB = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-    .then(() => {
-      consola.success('Base de datos de MongoDB conectada')
+    .then((con) => {
+      consola.success(`Base de datos de MongoDB conectada a: ${con.connection.host}`)
     })
     .catch(error => {
       consola.error(error)
