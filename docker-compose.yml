@@ -6,7 +6,7 @@ volumes:
 
 services:
   backend:
-    container_name: eva-backend
+    container_name: eva-app
     restart: always
     build: .
     env_file:
@@ -20,7 +20,5 @@ services:
     image: mongo:4.4.6
     ports: 
       - "27017:27017"
-    logging:
-      driver: none
     volumes:
       - /web_data:/data/db
