@@ -6,7 +6,7 @@ volumes:
 
 services:
   backend:
-    container_name: eva-app
+    container_name: eva-backend
     restart: always
     build: .
     env_file:
