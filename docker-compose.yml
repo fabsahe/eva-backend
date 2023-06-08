@@ -1,5 +1,9 @@
 version: "2"
 
+volumes:
+  mongodb_data:
+    external: true
+
 services:
   backend:
     container_name: eva-backend
@@ -16,4 +20,7 @@ services:
     image: mongo:4.4.6
     ports: 
       - "27017:27017"
-
+    logging:
+      driver: none
+    volumes:
+      - /web_data:/data/db
