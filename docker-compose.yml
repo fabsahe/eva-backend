@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  backend:
+    container_name: eva-backend
+    restart: always
+    build: 1.0
+    env_file:
+      - .env
+    ports:
+      - "3001:3001"
+    links:
+      - mongo
+  mongo:
+    container_name: mongoserver
+    image: mongo:4.4.6
+    ports: 
+      - "27017:27017"
+
