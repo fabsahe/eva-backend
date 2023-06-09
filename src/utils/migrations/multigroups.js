@@ -12,7 +12,7 @@ const saveMultiGroups = async (connection) => {
   const timerID = loading()
 
   const [rows] = await connection.query(
-    'SELECT g.carrera, g.plan, g.semestre, g.grupo, p.profesor, p.idMateria, p.anyo, p.nombrePeriodo, p.alumnosNormales, p.alumnosRecursadores FROM `gruposmultiples` as g LEFT JOIN `profesorymateriamultiple` as p ON g.idMateriaYprofesor = p.id'
+    'SELECT g.carrera, g.plan, g.semestre, g.grupo, p.profesor, p.idMateria, p.anyo, p.nombrePeriodo, p.alumnosNormales, p.alumnosRecursadores FROM `gruposMultiples` as g LEFT JOIN `profesorYmateriaMultiple` as p ON g.idMateriaYprofesor = p.id'
   )
 
   const assignments = await Promise.all(

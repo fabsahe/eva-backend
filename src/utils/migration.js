@@ -16,6 +16,27 @@ const saveUsers = require('./migrations/users')
 dotenv.config()
 connectDB()
 
+let dbHost = ''
+let dbUser = ''
+let dbPassword = ''
+let dbName = ''
+let dbPort = ''
+
+if (process.env.MODE === 'dev') {
+  dbHost = process.env.DB_HOST_D
+  dbUser = process.env.DB_USER_D
+  dbPassword = process.env.DB_PASS_D
+  dbName = process.env.DB_NAME_D
+  dbPort = process.env.DB_PORT_D
+}
+if (process.env.MODE === 'prod') {
+  dbHost = process.env.DB_HOST_P
+  dbUser = process.env.DB_USER_P
+  dbPassword = process.env.DB_PASS_P
+  dbName = process.env.DB_NAME_P
+  dbPort = process.env.DB_PORT_P
+}
+
 function printTime (start, end) {
   const seconds = (end - start) / 1000
   consola.log('...')
@@ -25,11 +46,14 @@ function printTime (start, end) {
 async function getData () {
   try {
     const connection = await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'horariosnueva'
+      host: dbHost,
+      user: dbUser,
+      password: dbPassword,
+      database: dbName,
+      port: dbPort
     })
+    consola.success('Conexión MySQL realizada :)')
+    consola.log('...')
 
     await saveInstitutes(connection)
     await saveCareers(connection)

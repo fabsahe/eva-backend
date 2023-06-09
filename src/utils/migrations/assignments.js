@@ -11,7 +11,7 @@ function getLetter (number) {
 const saveAssignments = async (connection) => {
   const timerID = loading()
 
-  const [rows] = await connection.query('SELECT * FROM profesorymateria')
+  const [rows] = await connection.query('SELECT * FROM profesorYmateria')
   const assignments = await Promise.all(
     rows.map(async (row) => {
       // obtener profesor relacionado en mongo
