@@ -15,8 +15,11 @@ services:
     container_name: mongoserver
     image: mongo:4.4.6
     restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=
+      - MONGO_INITDB_ROOT_PASSWORD=
     ports: 
-      - "27017:27017"
+      - "28018:27017"
     volumes:
       - mongodb_vol:/data/db
 
