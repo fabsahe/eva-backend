@@ -1,4 +1,4 @@
-version: "3"
+version: "3.4"
 
 services:
   backend:
@@ -18,7 +18,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=
       - MONGO_INITDB_ROOT_PASSWORD=
-    ports: 
+    ports:
       - "28018:27017"
     volumes:
       - mongodb_vol:/data/db
