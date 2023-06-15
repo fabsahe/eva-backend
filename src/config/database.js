@@ -1,8 +1,13 @@
 const mongoose = require('mongoose')
 const consola = require('consola')
 
+const username = encodeURIComponent(process.env.MONGODB_USERNAME)
+const password = encodeURIComponent(process.env.MONGODB_PASSWORD)
+const endpoint = encodeURIComponent(process.env.MONGODB_ENDPOINT)
+const uri = `mongodb://${username}:${password}@${endpoint}`
+
 const connectDB = async () => {
-  mongoose.connect(process.env.MONGODB_URI, {
+  mongoose.connect(process.env.MONGODB_URI || uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
