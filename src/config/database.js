@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 const consola = require('consola')
 
-const username = encodeURIComponent(process.env.MONGODB_USERNAME)
-const password = encodeURIComponent(process.env.MONGODB_PASSWORD)
-const endpoint = encodeURIComponent(process.env.MONGODB_ENDPOINT)
+const username = process.env.MONGODB_USERNAME
+const password = process.env.MONGODB_PASSWORD
+const endpoint = process.env.MONGODB_ENDPOINT
 const uri = `mongodb://${username}:${password}@${endpoint}`
 console.log(uri)
 
