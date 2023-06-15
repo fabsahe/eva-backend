@@ -9,8 +9,8 @@ services:
       - .env
     ports:
       - "3001:3001"
-    links:
-      - mongo
+    networks:
+      - node-mongo-network
   mongo:
     container_name: mongoserver
     image: mongo:4.4.6
@@ -20,6 +20,12 @@ services:
       - "28018:27017"
     volumes:
       - mongodb_vol:/data/db
+    networks:
+      - node-mongo-network
+
+networks:
+  node-mongo-network:
+    driver: bridge
 
 volumes:
   mongodb_vol:
