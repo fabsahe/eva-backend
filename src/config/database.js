@@ -5,7 +5,6 @@ const username = process.env.MONGODB_USERNAME
 const password = process.env.MONGODB_PASSWORD
 const endpoint = process.env.MONGODB_ENDPOINT
 const uri = `mongodb://${username}:${password}@${endpoint}`
-console.log(uri)
 
 const connectDB = async () => {
   mongoose.connect(process.env.MONGODB_URI || uri, {
