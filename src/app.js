@@ -11,6 +11,7 @@ const professorRouter = require('./routes/professor.routes')
 const assignmentRouter = require('./routes/assignment.routes')
 const answerRouter = require('./routes/answer.routes')
 const timestampRouter = require('./routes/timestamp.routes')
+const versionRouter = require('./routes/version.routes')
 
 const app = express()
 connectDB()
@@ -28,5 +29,6 @@ app.use('/api/professors', professorRouter)
 app.use('/api/assignments', assignmentRouter)
 app.use('/api/answers', answerRouter)
 app.use('/api/timestamps', timestampRouter)
+app.use('/api/version', versionRouter)
 
 module.exports = app

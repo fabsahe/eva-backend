@@ -12,6 +12,7 @@ const saveSubjects = require('./migrations/subjects')
 const saveAssignments = require('./migrations/assignments')
 const saveMultiGroups = require('./migrations/multigroups')
 const saveUsers = require('./migrations/users')
+const Version = require('../models/version.model')
 
 dotenv.config()
 connectDB()
@@ -43,6 +44,16 @@ function printTime (start, end) {
   consola.success(`Migración realizada en ${seconds} segundos`)
 }
 
+async function saveVersion () {
+  const version = {
+    code: '1.0.0',
+    current: true
+  }
+  const newVersion = new Version(version)
+  const savedVersion = await newVersion.save()
+  consola.success(`Versión ${savedVersion.code} guardada`)
+}
+
 async function getData () {
   try {
     const connection = await mysql.createConnection({
@@ -64,6 +75,7 @@ async function getData () {
     await saveAssignments(connection)
     await saveMultiGroups(connection)
     await saveUsers(connection)
+    await saveVersion()
 
     await connection.end()
   } catch (error) {
