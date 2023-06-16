@@ -10,6 +10,7 @@ const User = require('../../models/user.model')
 const Period = require('../../models/period.model')
 const Question = require('../../models/question.model')
 const Answer = require('../../models/answer.model')
+const Version = require('../../models/version.model')
 
 const deleteAll = async () => {
   try {
@@ -24,6 +25,7 @@ const deleteAll = async () => {
     await Form.deleteMany()
     await Question.deleteMany()
     await Answer.deleteMany()
+    await Version.deleteMany()
     consola.success('Colecciones eliminadas')
     return true
   } catch (error) {
