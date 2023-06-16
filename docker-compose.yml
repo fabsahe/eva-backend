@@ -1,8 +1,8 @@
 version: "3.4"
 
 services:
-  backend:
-    container_name: eva-backend
+  nodeapp:
+    container_name: eva_backend
     restart: always
     build: .
     env_file:
