@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const moment = require('moment-timezone')
 
 const formSchema = new mongoose.Schema({
   title: String,
@@ -30,9 +31,12 @@ const formSchema = new mongoose.Schema({
 
 formSchema.set('toJSON', {
   transform: (document, returnedObject) => {
-    const now = new Date()
+    const now = moment()
+    const startDate = moment.tz(returnedObject.startDate, 'America/Mexico_City')
+    const endDate = moment.tz(returnedObject.endDate, 'America/Mexico_City')
+
     let visible = null
-    if (now >= returnedObject.startDate && now <= returnedObject.endDate) {
+    if (now >= startDate && now <= endDate) {
       visible = true
     } else {
       visible = false
