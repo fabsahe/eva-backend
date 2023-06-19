@@ -35,6 +35,13 @@ formSchema.set('toJSON', {
     const startDate = moment.tz(returnedObject.startDate, 'America/Mexico_City')
     const endDate = moment.tz(returnedObject.endDate, 'America/Mexico_City')
 
+    /* timezone test */
+    console.log('NOW = ', now)
+    console.log('START_DATE_ORIGINAL = ', returnedObject.startDate)
+    console.log('END_DATE_ORIGINAL = ', returnedObject.endDate)
+    console.log('START_DATE_MOMENT = ', startDate)
+    console.log('END_DATE_MOMENT = ', endDate)
+
     let visible = null
     if (now >= startDate && now <= endDate) {
       visible = true
