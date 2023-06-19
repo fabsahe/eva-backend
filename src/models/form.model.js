@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const dayjs = require('dayjs')
 
 const formSchema = new mongoose.Schema({
   title: String,
@@ -31,22 +30,10 @@ const formSchema = new mongoose.Schema({
 
 formSchema.set('toJSON', {
   transform: (document, returnedObject) => {
-    const now = dayjs()
-    const startDateUTC = dayjs(returnedObject.startDate)
-    const endDateUTC = dayjs(returnedObject.endDate)
-    const startDate = startDateUTC.subtract(6, 'hour')
-    const endDate = endDateUTC.subtract(6, 'hour')
-
-    /* timezone test */
-    console.log('NOW = ', now)
-    console.log('START_DATE_ORIGINAL = ', returnedObject.startDate)
-    console.log('END_DATE_ORIGINAL = ', returnedObject.endDate)
-    console.log('START_DATE_DAYJS = ', startDate)
-    console.log('END_DATE_DAYJS = ', endDate)
-    console.log('===================')
+    const now = new Date()
 
     let visible = null
-    if (now >= startDate && now <= endDate) {
+    if (now >= returnedObject.startDate && now <= returnedObject.endDate) {
       visible = true
     } else {
       visible = false

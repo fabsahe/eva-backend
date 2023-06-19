@@ -18,8 +18,8 @@ async function generateForm (isEmpty, data, userId) {
 
   const commonProperties = {
     title,
-    startDate: new Date(year1, month1, day1),
-    endDate: new Date(year2, month2, day2, 23, 59, 59)
+    startDate: new Date(Date.UTC(year1, month1, day1, 6, 0, 1)),
+    endDate: new Date(Date.UTC(year2, month2, day2 + 1, 5, 59, 59))
   }
 
   if (isEmpty) {
