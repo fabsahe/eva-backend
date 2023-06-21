@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./index",
     "dev": "nodemon -r dotenv/config ./index",
-    "mini-seeder": "node ./src/utils/mini-seeder",
+    "init": "node ./src/utils/init",
     "migration": "node ./src/utils/migration",
     "reset": "node ./src/utils/deleteForms",
     "empty": "node ./src/utils/deleteAnswers",
@@ -18,7 +18,7 @@
     "bcrypt": "5.1.0",
     "consola": "2.15.3",
     "cors": "2.8.5",
-    "dayjs": "^1.11.8",
+    "dayjs": "1.11.8",
     "dotenv": "16.0.3",
     "express": "4.18.2",
     "jsonwebtoken": "9.0.0",
