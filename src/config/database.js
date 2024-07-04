@@ -7,10 +7,7 @@ const endpoint = process.env.MONGODB_ENDPOINT
 const uri = `mongodb://${username}:${password}@${endpoint}`
 
 const connectDB = async () => {
-  mongoose.connect(process.env.MONGODB_URI || uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+  mongoose.connect(process.env.MONGODB_URI || uri)
     .then((con) => {
       consola.success(`Base de datos de MongoDB conectada a: ${con.connection.host}`)
     })
