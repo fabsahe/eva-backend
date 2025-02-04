@@ -22,7 +22,7 @@
     "dotenv": "16.0.3",
     "express": "4.19.2",
     "jsonwebtoken": "9.0.0",
-    "mongoose": "8.4.4",
+    "mongoose": "8.9.7",
     "morgan": "1.10.0",
     "mysql2": "3.10.2",
     "validator": "13.7.0"
